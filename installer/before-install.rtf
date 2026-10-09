@@ -1,0 +1,37 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fswiss\fcharset0 Segoe UI;}}
+{\colortbl ;\red194\green65\blue12;\red90\green90\blue90;}
+\viewkind4\uc1\pard\sa100\f0\fs20
+{\b\fs26\cf1 What's in Toasty}\par
+Toasty shows your CPU, GPU and RAM temperatures and usage as colour-coded numbers in the system tray, with a pop-up panel for details, alerts and game sessions. Here is everything this installer puts on your PC, and why.\par
+
+{\b\fs22 Toasty} \cf2(this app, MIT licence)\cf0\par
+\pard\fi-240\li480\tx480\sa60\bullet\tab The tray app and panel, installed to Program Files.\par
+\bullet\tab Runs as administrator, because reading temperatures needs low-level hardware access.\par
+\bullet\tab Includes the .NET runtime (Microsoft, MIT), so nothing else needs installing.\par
+\pard\sa100\par
+
+{\b\fs22 PawnIO driver} \cf2(by namazso, GPL-2.0, optional)\cf0\par
+\pard\fi-240\li480\tx480\sa60\bullet\tab A small, digitally signed Windows driver that lets apps read CPU temperature and power safely. It replaces the older WinRing0 driver that Windows Defender now blocks.\par
+\bullet\tab Installed system-wide and shared with other monitoring tools that use it (e.g. LibreHardwareMonitor, FanControl). Skipped if already installed.\par
+\bullet\tab You can untick it on the options page of this installer. Without it, CPU temperature shows as "-"; everything else still works.\par
+\bullet\tab Uninstalling Toasty leaves PawnIO in place; remove it from Installed apps if you like.\par
+\pard\sa100\par
+
+{\b\fs22 PresentMon} \cf2(by Intel, MIT)\cf0\par
+\pard\fi-240\li480\tx480\sa60\bullet\tab Used only while a game is being recorded, to measure FPS, 1% lows and stutter.\par
+\bullet\tab Reads the frame timing events Windows already publishes. It doesn't inject anything into games.\par
+\bullet\tab Can be switched off in Settings > Game sessions.\par
+\pard\sa100\par
+
+{\b\fs22 LibreHardwareMonitor} \cf2(MPL-2.0)\cf0\par
+\pard\fi-240\li480\tx480\sa60\bullet\tab The open-source library Toasty uses to read sensors, built into Toasty.exe along with its helper libraries HidSharp (Apache-2.0) and DiskInfoToolkit / RAMSPDToolkit / BlackSharp (MPL-2.0).\par
+\pard\sa100\par
+
+{\b\fs26\cf1 Your privacy}\par
+\pard\fi-240\li480\tx480\sa60\bullet\tab Toasty never connects to the internet: no accounts, no telemetry, no ads.\par
+\bullet\tab Settings and game sessions are stored only on this PC, in %AppData%\\Toasty. You control how long sessions are kept and how much disk they may use.\par
+\pard\sa100\par
+
+{\b\fs26\cf1 Licences}\par
+Toasty is free and open source under the MIT licence. Full third-party notices and licence texts are installed with the app (THIRD-PARTY-NOTICES.md and the licenses folder), and the source code, including PawnIO's driver source, is published with each release.\par
+}
