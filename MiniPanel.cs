@@ -861,7 +861,7 @@ public sealed class MiniPanel : Form, IMessageFilter
         var (count, bytes) = Store.Usage();
         var s = _settings();
         string keep = s.SessionRetentionDays > 0 ? $"kept {s.SessionRetentionDays} days" : "kept forever";
-        return $"{count} sessions  ·  {SessionStore.FormatBytes(bytes)} of {s.SessionMaxMb} MB  ·  {keep}";
+        return $"{count} session{(count == 1 ? "" : "s")}  ·  {SessionStore.FormatBytes(bytes)} of {s.SessionMaxMb} MB  ·  {keep}";
     }
 
     private int RenderGames(Graphics? g, int y, int w, int pad)

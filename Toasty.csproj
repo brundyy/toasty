@@ -10,7 +10,7 @@
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <AssemblyName>Toasty</AssemblyName>
     <RootNamespace>Toasty</RootNamespace>
-    <Version>0.6.1</Version>
+    <Version>0.6.2</Version>
     <Product>Toasty</Product>
     <Description>CPU, GPU and RAM usage and temperatures in the system tray.</Description>
     <ApplicationIcon>assets\toasty.ico</ApplicationIcon>

@@ -15,6 +15,10 @@
 
 ---
 
+<p align="center">
+  <img src="docs/screenshots/tray-icons.png" alt="Toasty's tray icons: CPU and GPU temperature and usage, and RAM usage, as colour-coded numbers" width="430">
+</p>
+
 Toasty puts small, colour-coded numbers in your system tray for CPU temperature, CPU usage, GPU temperature, GPU usage and RAM usage. Cyan is cold, green is fine, then yellow, orange and red as things heat up. Click any of them for a panel with live graphs, per-core detail, every sensor your hardware exposes, and a history of your game sessions with an FPS and bottleneck breakdown.
 
 ## Features
@@ -27,6 +31,32 @@ Toasty puts small, colour-coded numbers in your system tray for CPU temperature,
 - **Alerts** when a reading stays above a limit for a while (for example CPU at 85°C for 30 seconds). Brief spikes are ignored.
 - **Power vs your PSU.** USB-connected power supplies (Corsair HXi / RMi / AXi and similar) are detected and report real measured power; for others, enter the wattage and Toasty estimates the draw.
 - **Settings live in the panel** and apply instantly. Retention and disk-space limits for game sessions are up to you.
+
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/panel-summary.png" alt="The Summary tab: CPU, GPU, memory and power with live graphs and per-core detail"><br>
+      <sub><b>Summary</b>: live graphs, per-core load, clocks and power, GPU hotspot and memory junction, PSU load</sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/game-session.png" alt="A recorded game session: verdict and hints, FPS and 1% lows, timeline graphs, min/avg/max stats"><br>
+      <sub><b>Game sessions</b>: FPS and 1% lows, a bottleneck verdict with hints, timelines and min/avg/max for every sensor</sub>
+    </td>
+    <td align="center" valign="top" width="33%">
+      <img src="docs/screenshots/settings.png" alt="The Settings tab: icon style with live preview, colour bands and thresholds per metric"><br>
+      <sub><b>Settings</b>: right in the panel, applied instantly, with a live preview of your tray icons</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="docs/screenshots/icon-styles.png" alt="The six tray icon styles: label + number, number only, number + level bar, label + level bar, meter, colour dot" width="560"><br>
+  <sub>Six tray icon styles. Pick a default and override any icon.</sub>
+</p>
+
+<sub>Screenshots are rendered by Toasty's own drawing code with sample readings.</sub>
 
 ## Install
 
@@ -62,7 +92,7 @@ Toasty makes no network connections at all. Settings and game sessions are store
 
 ## Build from source
 
-Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download). Everything else is fetched by the build script, pinned to exact versions and hash-checked.
+Just clone and run the build script. It uses the [.NET 10 SDK](https://dotnet.microsoft.com/download) if you have one; if not, it fetches a private copy into `.dotnet\` with Microsoft's official install script (signature-checked), so nothing is installed system-wide. Everything else is pinned to exact versions and hash-checked. (People who just *use* Toasty never need .NET: the runtime is built into the app.)
 
 ```powershell
 .\build-installer.ps1

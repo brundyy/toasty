@@ -8,9 +8,31 @@ Set-Location $root
 $version = ([xml](Get-Content "$root\Toasty.csproj")).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
 Write-Host "Building Toasty $version" -ForegroundColor Cyan
 
+# 0. .NET 10 SDK. Use an installed one if present; otherwise fetch a private copy into .dotnet\
+#    with Microsoft's official install script (signature-checked), so nothing is installed system-wide.
+#    End users never need this: the runtime is bundled into Toasty.exe.
+$dotnet = 'dotnet'
+$hasSdk = $false
+try { $hasSdk = [bool](& dotnet --list-sdks 2>$null | Where-Object { $_ -match '^10\.' }) } catch { }
+if (-not $hasSdk) {
+    $dotnet = "$root\.dotnet\dotnet.exe"
+    if (-not (Test-Path $dotnet)) {
+        Write-Host "No .NET 10 SDK found; fetching a project-local copy into .dotnet\ ..."
+        $script = "$root\installer\tools\dotnet-install.ps1"
+        New-Item -ItemType Directory -Force (Split-Path $script) | Out-Null
+        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile $script
+        $sig = Get-AuthenticodeSignature $script
+        if ($sig.Status -ne 'Valid' -or $sig.SignerCertificate.Subject -notmatch 'O=Microsoft Corporation') {
+            throw "dotnet-install.ps1 isn't validly signed by Microsoft; refusing to run it."
+        }
+        & $script -JsonFile "$root\global.json" -InstallDir "$root\.dotnet" -NoPath
+        if (-not (Test-Path $dotnet)) { throw ".NET SDK install failed" }
+    }
+}
+
 # 1. Self-contained single-file exe (bundles the .NET runtime).
 if (Test-Path "$root\publish") { Remove-Item "$root\publish" -Recurse -Force }
-dotnet publish "$root\Toasty.csproj" -c Release -r win-x64 --self-contained true `
+& $dotnet publish "$root\Toasty.csproj" -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
     -p:EnableCompressionInSingleFile=true -p:DebugType=none -o "$root\publish"
 if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed" }

@@ -8,6 +8,7 @@ dist/
 installer/build/
 installer/redist/
 installer/tools/
+.dotnet/
 
 # IDEs and editors
 .vs/
