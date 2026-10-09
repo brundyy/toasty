@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 Set-Location $root
 
-$version = ([xml](Get-Content "$root\Toasty.csproj")).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
+$version = ([xml](Get-Content "$root\src\Toasty.csproj")).Project.PropertyGroup.Version | Where-Object { $_ } | Select-Object -First 1
 Write-Host "Building Toasty $version" -ForegroundColor Cyan
 
 # 0. .NET 10 SDK. Use an installed one if present; otherwise fetch a private copy into .dotnet\
@@ -32,7 +32,7 @@ if (-not $hasSdk) {
 
 # 1. Self-contained single-file exe (bundles the .NET runtime).
 if (Test-Path "$root\publish") { Remove-Item "$root\publish" -Recurse -Force }
-& $dotnet publish "$root\Toasty.csproj" -c Release -r win-x64 --self-contained true `
+& $dotnet publish "$root\src\Toasty.csproj" -c Release -r win-x64 --self-contained true `
     -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
     -p:EnableCompressionInSingleFile=true -p:DebugType=none -o "$root\publish"
 if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed" }

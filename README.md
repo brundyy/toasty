@@ -100,7 +100,7 @@ Just clone and run the build script. It uses the [.NET 10 SDK](https://dotnet.mi
 
 This publishes a self-contained `publish\Toasty.exe`, downloads PawnIO 2.2.0 and PresentMon 2.6.0, fetches Inno Setup from its NuGet package into `installer\tools` (nothing is installed on your machine), and writes `dist\Toasty-Setup-<version>.exe` along with `dist\PawnIO-2.2.0-source.zip`.
 
-To release: bump `<Version>` in `Toasty.csproj`, run the script, and attach both files from `dist\` to a GitHub release (the PawnIO source zip is required by its GPL licence). If you change the logo, regenerate the icon with `.\tools\make-icon.ps1`.
+To release: bump `<Version>` in `src/Toasty.csproj`, run the script, and attach both files from `dist\` to a GitHub release (the PawnIO source zip is required by its GPL licence). If you change the logo, regenerate the icon with `.\tools\make-icon.ps1`.
 
 ## Credits
 
