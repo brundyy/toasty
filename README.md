@@ -2,7 +2,7 @@
   <img src="assets/toasty.png" alt="Toasty logo" width="160">
 </p>
 
-<h1 align="center">Toasty 🔥</h1>
+<h1 align="center">Toasty🔥</h1>
 
 <p align="center">
   Your PC's temperatures and load, at a glance, right in the Windows system tray.<br>
