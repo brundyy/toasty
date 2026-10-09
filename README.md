@@ -5,7 +5,7 @@
 <h1 align="center">Toasty🔥</h1>
 
 <p align="center">
-  Your PC's temperatures and load, at a glance, right in the Windows system tray.<br>
+  Your PC's temperatures and load, at a glance, right in the Windows system tray with a handy pop-out metric panel.<br>
   Free and open source (MIT). No accounts, no telemetry, never goes online.
 </p>
 
